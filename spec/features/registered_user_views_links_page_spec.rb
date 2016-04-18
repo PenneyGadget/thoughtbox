@@ -37,7 +37,6 @@ feature "registered user sees their links page" do
     fill_in "Title", with: "The Google"
     fill_in "Url", with: "httx.grr.com"
     click_button "Add New Link"
-    save_and_open_page
 
     expect(page).to have_content("Invalid Link")
     expect(Link.count).to eq(0)

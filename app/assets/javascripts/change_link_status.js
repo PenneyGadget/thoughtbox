@@ -2,7 +2,7 @@ var changeLinkStatus = function() {
   $("table").delegate(".unread-btn", "click", function() {
     var $button = $(this);
     var $link = $button.closest(".link");
-
+    
   // $.ajax({
   //   type: "PUT",
   //   debugger

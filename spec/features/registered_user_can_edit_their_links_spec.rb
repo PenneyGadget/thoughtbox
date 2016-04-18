@@ -30,4 +30,24 @@ feature "user can edit their links" do
     expect(page).to_not have_content user_link.url
   end
 
+  scenario "cannot edit url to invalid url" do
+    user = create(:user)
+    user_link = create(:link)
+    user.links << user_link
+
+    visit login_path
+
+    fill_in "Email", with: user.email_address
+    fill_in "Password", with: "password"
+    click_on "Login"
+
+    click_on "Edit"
+
+    fill_in "Url", with: "gobbitygook"
+    click_button "Update Link"
+
+    expect(current_path).to eq(link_path(user_link))
+    expect(page).to have_content("Must have valid title and url")
+  end
+
 end

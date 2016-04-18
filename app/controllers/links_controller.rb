@@ -30,7 +30,7 @@ class LinksController < ApplicationController
       flash[:notice] = "Link made MORE BETTER!"
       redirect_to links_path
     else
-      flash.now[:error] = "Must have title and url"
+      flash.now[:error] = "Must have valid title and url"
       render :edit
     end
   end
