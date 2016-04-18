@@ -8,6 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 <body>
 
+<% if current_user %>
+  Welcome!
+  <%= link_to "Logout", logout_path, method: :delete %>
+<% end %>
+
+<% flash.each do |type, msg| %>
+  <div class="flash">
+    <%= content_tag :div, msg.html_safe %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
