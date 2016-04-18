@@ -10,7 +10,7 @@
 
 <% if current_user %>
   Welcome!
-  <%= link_to "Logout", logout_path, method: :delete %>
+  <%= link_to "Log Out", logout_path, method: :delete %>
 <% end %>
 
 <% flash.each do |type, msg| %>

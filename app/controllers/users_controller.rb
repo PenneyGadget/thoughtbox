@@ -11,19 +11,15 @@ class UsersController < ApplicationController
       flash[:notice] = "Account successfully created!"
       redirect_to links_path
     else
-      flash.new[:error] = @user.errors.full_messages.join(", ")
+      flash.now[:error] = @user.errors.full_messages.join(", ")
       render :new
     end
-  end
-
-  def show
-
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email_address, :password)
   end
 
 end
