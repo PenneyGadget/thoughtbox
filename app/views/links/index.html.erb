@@ -1,53 +1,57 @@
-<h4>Your Lovely Links:</h4>
 
-<table class="table table-striped table-bordered table-condensed">
-  <thead>
-    <tr>
-      <th>Link Title</th>
-      <th>URL</th>
-      <th>Fix It</th>
-      <th>Read?</th>
-      <th>Change Status</th>
-    </tr>
-    <% @links.each do |link| %>
-    <tr id="link-<%=link.id%>">
-      <td class="link-title">
-        <%= link.title %>
-      </td>
-      <td class="link-url">
-        <a href="<%= link.url %>"><%= link.url %></a>
-      </td>
-      <td>
-        <%= button_to "Edit", edit_link_path(link) %>
-      </td>
-      <td>
-        <% if link.read? %>
-        <%= "Yes" %>
-        <% else %>
-        <%= "No" %>
+<div class="container links-list">
+  <h4>Your Lovely Links:</h4>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Link Title</th>
+        <th>URL</th>
+        <th>Fix It</th>
+        <th>Read?</th>
+        <th>Change Status</th>
+      </tr>
+        <% @links.each do |link| %>
+        <tr class="link">
+          <td class="link-title">
+            <%= link.title %>
+          </td>
+          <td class="link-url">
+            <a href="<%= link.url %>"><%= link.url %></a>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_link_path(link), class: "btn btn-default" %>
+          </td>
+          <td>
+            <% if link.read? %>
+            <%= "Yes" %>
+            <% else %>
+            <%= "No" %>
+            <% end %>
+          </td>
+          <td>
+            <% if link.read? %>
+            <%= button_tag "Mark as Unread", class: "link-status-btn read-btn btn btn-default btn-success", id: link.id %>
+            <% else %>
+            <%= button_tag "Mark as Read", class: "link-status-btn unread-btn btn btn-default btn-danger", id: link.id %>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-      </td>
-      <td>
-        <% if link.read? %>
-        <%= button_to "Mark as Unread", class: "link-status-btn read-btn", id: link.id %>
-        <% else %>
-        <%= button_to "Mark as Read", class: "link-status-btn unread-btn", id: link.id %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </thead>
-</table>
+    </thead>
+  </table>
+</div>
 
-<h2>Add A New Link</h2>
-<%= form_for Link.new, url: links_path do |f| %>
+<div class="container new-link-form">
+  <h2>Add A New Link:</h2>
+  <%= form_for Link.new, url: links_path do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
 
-  <%= f.label :url %>
-  <%= f.text_field :url %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
 
-  <%= f.submit "Add New Link" %>
+    <%= f.submit "Add New Link" %>
 
-<% end %>
+  <% end %>
+</div>

@@ -14,8 +14,8 @@ class LinksController < ApplicationController
       flash[:notice] = "New link saved!"
       redirect_to links_path
     else
-      flash[:error] = "Invalid Link"
-      @links = current_user.links
+      flash.now[:error] = "Invalid Link"
+      @links = current_user.links.select{ |link| !link.id.nil? }
       render :index
     end
   end

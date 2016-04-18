@@ -35,6 +35,7 @@ feature "unauthenicated user can sign up" do
   end
 
   scenario "password and confirmation must match" do
+    pending
     visit root_path
     click_link "Sign Up"
 

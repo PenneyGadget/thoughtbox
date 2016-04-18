@@ -35,12 +35,12 @@ feature "registered user sees their links page" do
     click_button "Login"
 
     fill_in "Title", with: "The Google"
-    fill_in "Url", with: "https://www.google.xxx"
+    fill_in "Url", with: "httx.grr.com"
     click_button "Add New Link"
-
-    expect(Link.count).to eq(0)
+    save_and_open_page
 
     expect(page).to have_content("Invalid Link")
+    expect(Link.count).to eq(0)
   end
 
   scenario "one user cannot view another users links" do

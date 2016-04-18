@@ -15,6 +15,6 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
-$(document).read(function() {
-  changeLinkReadStatus();
+$(document).ready(function() {
+  changeLinkStatus();
 });
