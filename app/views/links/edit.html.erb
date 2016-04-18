@@ -1,1 +1,12 @@
-Hi!
+<h2>Edit Your Link, Make it More Better!</h2>
+
+<%= form_for @link do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.submit "Update Link" %>
+<% end %>

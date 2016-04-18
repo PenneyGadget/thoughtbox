@@ -7,6 +7,7 @@
       <th>URL</th>
       <th>Fix It</th>
       <th>Read?</th>
+      <th>Change Status</th>
     </tr>
     <% @links.each do |link| %>
     <tr id="link-<%=link.id%>">
@@ -14,13 +15,24 @@
         <%= link.title %>
       </td>
       <td class="link-url">
-        <%= link_to link.url %>
+        <a href="<%= link.url %>"><%= link.url %></a>
       </td>
       <td>
-        <%= link_to "Edit", edit_link_path(link) %>
+        <%= button_to "Edit", edit_link_path(link) %>
       </td>
       <td>
-        <%= link.read %>
+        <% if link.read? %>
+        <%= "Yes" %>
+        <% else %>
+        <%= "No" %>
+        <% end %>
+      </td>
+      <td>
+        <% if link.read? %>
+        <%= button_to "Mark as Unread", class: "link-status-btn read-btn", id: link.id %>
+        <% else %>
+        <%= button_to "Mark as Read", class: "link-status-btn unread-btn", id: link.id %>
+        <% end %>
       </td>
     </tr>
     <% end %>

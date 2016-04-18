@@ -21,7 +21,18 @@ class LinksController < ApplicationController
   end
 
   def edit
-    @link = Link.find(params["id"])
+    @link = Link.find(params[:id])
+  end
+
+  def update
+    @link = Link.find(params[:id])
+    if @link.update(link_params)
+      flash[:notice] = "Link made MORE BETTER!"
+      redirect_to links_path
+    else
+      flash.now[:error] = "Must have title and url"
+      render :edit
+    end
   end
 
   private

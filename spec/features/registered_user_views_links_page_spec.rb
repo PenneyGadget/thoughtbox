@@ -21,7 +21,8 @@ feature "registered user sees their links page" do
 
     expect(page).to have_content("The Google")
     expect(page).to have_content("Read?")
-    expect(page).to have_content("false")
+    expect(page).to have_content("No")
+    expect(page).to have_content("Mark as Read")
   end
 
   scenario "user cannot submit an invalid link" do
