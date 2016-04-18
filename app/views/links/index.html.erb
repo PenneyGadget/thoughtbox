@@ -1,0 +1,31 @@
+<h4>Your Lovely Links:</h4>
+
+<% @links.each do |link| %>
+  <tr id="link-<%=link.id%>">
+    <th class="link-title">
+      <%= link.title %>
+    </th>
+    <th class="link-url">
+      <%= link_to "Go!", link.url %>
+    </th>
+    <th>
+      <%= link_to "Edit", edit_link_path(link) %>
+    </th>
+    <th>
+
+    </th>
+  </tr>
+<% end %>
+
+<h2>Add A New Link</h2>
+<%= form_for Link.new, url: links_path do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.submit "Add New Link" %>
+
+<% end %>
