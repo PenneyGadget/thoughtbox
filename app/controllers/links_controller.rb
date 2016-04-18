@@ -14,13 +14,14 @@ class LinksController < ApplicationController
       flash[:notice] = "New link saved!"
       redirect_to links_path
     else
-      flash[:error] = "Invalid url"
+      flash[:error] = "Invalid Link"
+      @links = current_user.links
       render :index
     end
   end
 
   def edit
-
+    @link = Link.find(params["id"])
   end
 
   private

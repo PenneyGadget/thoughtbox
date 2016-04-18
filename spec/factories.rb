@@ -4,7 +4,6 @@ FactoryGirl.define do
     title "Turing"
     url "https://www.turing.io/"
     read false
-    user_id 1
   end
 
   factory :user do
