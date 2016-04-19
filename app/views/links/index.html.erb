@@ -23,16 +23,16 @@
           </td>
           <td>
             <% if link.read? %>
-            <%= "Yes" %>
+              <%= "Yes" %>
             <% else %>
-            <%= "No" %>
+              <%= "No" %>
             <% end %>
           </td>
           <td>
             <% if link.read? %>
-            <%= button_tag "Mark as Unread", class: "link-status-btn read-btn btn btn-default btn-success", id: link.id %>
+              <%= button_tag "Mark as Unread", class: "link-status-btn read-btn btn btn-default btn-success", id: link.id %>
             <% else %>
-            <%= button_tag "Mark as Read", class: "link-status-btn unread-btn btn btn-default btn-danger", id: link.id %>
+              <%= button_tag "Mark as Read", class: "link-status-btn unread-btn btn btn-default btn-danger", id: link.id %>
             <% end %>
           </td>
         </tr>
